@@ -58,7 +58,7 @@ def createtodo(request):
             newtodo.save()
             return redirect('currenttodos')
         except ValueError:
-            return render(request, 'todo/createtodo.html', {'form': TodoForm(), 'error': 'Bad data passed in'})
+            return render(request, 'todo/createtodo.html', {'form': TodoForm(), 'error': 'Bad data passed in Try again'})
 
 
 def currenttodos(request):
