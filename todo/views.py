@@ -1,5 +1,5 @@
 from django.db import IntegrityError
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django.contrib.auth import login
@@ -14,6 +14,8 @@ def signupuser(request):
                 user = User.objects.create_user(request.POST['username'], password=request.POST['password1'])
                 user.seve()
                 login(request, user)
+                return redirect('currenttodos')
+
 
             except IntegrityError:
                 return render(request, 'todo/signupuser.html',
